@@ -1,0 +1,166 @@
+.wrapper {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.site-main {
+  flex: 1 0 auto;
+  width: 100%;
+  max-width: var(--max-width-wide);
+  margin-inline: auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+// Long-form reading content stays at a comfortable measure even though the
+// outer container is wide enough for the home grid.
+.post,
+.page,
+.hero {
+  max-width: var(--max-width);
+  margin-inline: auto;
+}
+
+// ---- Header ----------------------------------------------------------------
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: saturate(180%) blur(10px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: 60px;
+  max-width: var(--max-width-wide);
+}
+
+.site-header__brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--heading);
+  letter-spacing: -0.02em;
+  margin-right: auto;
+}
+.site-header__brand:hover { text-decoration: none; color: var(--accent); }
+
+.site-nav { display: flex; align-items: center; }
+
+.site-nav__links {
+  display: flex;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.site-nav__links a {
+  color: var(--text-muted);
+  padding: 0.4em 0.7em;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.site-nav__links a:hover {
+  color: var(--text);
+  background: var(--bg-subtle);
+  text-decoration: none;
+}
+.site-nav__links a[aria-current="page"] { color: var(--accent); }
+
+.site-nav__toggle {
+  display: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  color: var(--text);
+}
+.site-nav__bars,
+.site-nav__bars::before,
+.site-nav__bars::after {
+  content: "";
+  position: absolute;
+  left: 9px;
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.2s ease;
+}
+.site-nav__bars { top: 19px; }
+.site-nav__bars::before { top: -7px; }
+.site-nav__bars::after { top: 7px; }
+
+// ---- Theme toggle ----------------------------------------------------------
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
+.theme-toggle__moon { display: none; }
+:root[data-theme="dark"] .theme-toggle__sun { display: none; }
+:root[data-theme="dark"] .theme-toggle__moon { display: block; }
+
+// ---- Footer ----------------------------------------------------------------
+.site-footer {
+  flex-shrink: 0;
+  border-top: 1px solid var(--border-subtle);
+  padding: 2rem 0;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--max-width-wide);
+}
+.site-footer__copy { margin: 0; }
+.site-footer__social {
+  display: flex;
+  gap: 1.1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.site-footer__social a { color: var(--text-muted); }
+.site-footer__social a:hover { color: var(--accent); }
+
+// ---- Mobile ----------------------------------------------------------------
+@media (max-width: 600px) {
+  .site-nav__toggle { display: block; }
+  .site-nav__links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    left: 0;
+    flex-direction: column;
+    gap: 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    padding: 0.5rem 1rem 1rem;
+    display: none;
+  }
+  .site-nav__links.is-open { display: flex; }
+  .site-nav__links a { display: block; padding: 0.7em 0.5em; }
+}

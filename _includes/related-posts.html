@@ -1,0 +1,40 @@
+{%- comment -%}
+  Find up to 3 other posts that share a tag with the current one, ranked by the
+  number of shared tags. Falls back to most-recent posts if there are no matches.
+{%- endcomment -%}
+{%- assign maxRelated = 3 -%}
+{%- assign related = "" | split: "" -%}
+
+{%- for post in site.posts -%}
+  {%- if post.url != page.url -%}
+    {%- assign shared = 0 -%}
+    {%- for tag in page.tags -%}
+      {%- if post.tags contains tag -%}{%- assign shared = shared | plus: 1 -%}{%- endif -%}
+    {%- endfor -%}
+    {%- if shared > 0 -%}{%- assign related = related | push: post -%}{%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- if related.size == 0 -%}
+  {%- for post in site.posts -%}
+    {%- if post.url != page.url and related.size < maxRelated -%}
+      {%- assign related = related | push: post -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+
+{%- if related.size > 0 -%}
+<section class="related" aria-label="Related posts">
+  <h2 class="section-title">You may also enjoy</h2>
+  <div class="related__items">
+    {%- for post in related limit: maxRelated -%}
+    <a class="related__card" href="{{ post.url | relative_url }}">
+      <img class="related__media" src="{{ post.image | default: site.default_cover | relative_url }}"
+           alt="" loading="lazy" width="400" height="225">
+      <span class="related__date">{{ post.date | date: "%b %-d, %Y" }}</span>
+      <span class="related__title">{{ post.title | escape }}</span>
+    </a>
+    {%- endfor -%}
+  </div>
+</section>
+{%- endif -%}

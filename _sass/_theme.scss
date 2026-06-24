@@ -1,0 +1,64 @@
+// Design tokens. Colors are exposed as CSS custom properties so the same
+// markup can render in light or dark mode via [data-theme] on <html>.
+
+:root {
+  // Type & spacing
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  --font-display: "Space Grotesk", "Inter", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", "Fira Code", Consolas,
+    "Liberation Mono", Menlo, monospace;
+
+  --max-width: 720px;
+  --max-width-wide: 1100px;
+  --radius: 14px;
+  --radius-sm: 8px;
+
+  --step-fluid: clamp(1rem, calc(0.92rem + 0.4vw), 1.0625rem);
+}
+
+// ---- Light theme (default) -------------------------------------------------
+:root,
+:root[data-theme="light"] {
+  --bg: #ffffff;
+  --bg-subtle: #f6f8fa;
+  --bg-code: #f6f8fa;
+  --surface: #ffffff;
+  --border: #d8dee4;
+  --border-subtle: #eaecef;
+
+  --text: #1f2328;
+  --text-muted: #59636e;
+  --heading: #11151a;
+
+  --accent: #0969da;
+  --accent-hover: #0a5cc7;
+
+  --tag-bg: #ddf4ff;
+  --tag-text: #0550ae;
+
+  --shadow: 0 1px 2px rgba(31, 35, 40, 0.06), 0 4px 16px rgba(31, 35, 40, 0.06);
+}
+
+// ---- Dark theme ------------------------------------------------------------
+:root[data-theme="dark"] {
+  --bg: #0d1117;
+  --bg-subtle: #161b22;
+  --bg-code: #161b22;
+  --surface: #161b22;
+  --border: #30363d;
+  --border-subtle: #21262d;
+
+  --text: #e6edf3;
+  --text-muted: #9198a1;
+  --heading: #f0f6fc;
+
+  --accent: #4493f8;
+  --accent-hover: #6cb0fc;
+
+  --tag-bg: #1f2d3d;
+  --tag-text: #79c0ff;
+
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.35);
+}

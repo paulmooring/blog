@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "jekyll",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "C:\\Users\\Paul\\Documents\\GitHub\\blog\\.claude\\serve.cmd"],
+      "port": 4000
+    }
+  ]
+}

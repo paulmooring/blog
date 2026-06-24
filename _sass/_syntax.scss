@@ -1,0 +1,78 @@
+// Code block container --------------------------------------------------------
+.highlight,
+.highlighter-rouge .highlight {
+  background: var(--bg-code);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+div.highlighter-rouge,
+figure.highlight {
+  margin: 0 0 1.5rem;
+}
+
+.highlight pre,
+pre.highlight {
+  margin: 0;
+  padding: 1rem 1.1rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  background: transparent;
+}
+
+.highlight code { background: none; border: 0; padding: 0; font-size: inherit; }
+
+// Rouge line tables (when line numbers are enabled)
+.highlight .lineno {
+  color: var(--text-muted);
+  opacity: 0.6;
+  user-select: none;
+  padding-right: 1em;
+}
+
+// ---- Light token colors (GitHub-light inspired) ----------------------------
+.highlight {
+  color: #1f2328;
+
+  .c, .c1, .cm, .cd, .cs { color: #6e7781; font-style: italic; } // comments
+  .cp { color: #6e7781; }                                        // preprocessor
+  .err { color: #f6f8fa; background-color: #82071e; }
+  .k, .kc, .kd, .kn, .kp, .kr, .kt { color: #cf222e; }           // keywords
+  .o, .ow { color: #0550ae; }                                    // operators
+  .p, .pi { color: #1f2328; }                                    // punctuation
+  .n, .na, .nb, .nc, .nd, .ne, .nl, .nn, .nx, .py { color: #1f2328; }
+  .nf, .nb { color: #8250df; }                                   // functions/builtins
+  .nt { color: #116329; }                                        // html tags
+  .nv, .vc, .vg, .vi { color: #953800; }                         // variables
+  .s, .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sx, .sr, .ss, .dl { color: #0a3069; } // strings
+  .m, .mf, .mh, .mi, .mo, .il { color: #0550ae; }                // numbers
+  .gd { color: #82071e; background-color: #ffebe9; }             // diff deleted
+  .gi { color: #116329; background-color: #dafbe1; }             // diff inserted
+  .gh { color: #0550ae; font-weight: 600; }                      // diff header
+  .gu { color: #8250df; font-weight: 600; }
+}
+
+// ---- Dark token colors (GitHub-dark inspired) ------------------------------
+:root[data-theme="dark"] .highlight {
+  color: #e6edf3;
+
+  .c, .c1, .cm, .cd, .cs { color: #8b949e; font-style: italic; }
+  .cp { color: #8b949e; }
+  .err { color: #f0f6fc; background-color: #8e1519; }
+  .k, .kc, .kd, .kn, .kp, .kr, .kt { color: #ff7b72; }
+  .o, .ow { color: #79c0ff; }
+  .p, .pi { color: #e6edf3; }
+  .n, .na, .nc, .nd, .ne, .nl, .nn, .nx, .py { color: #e6edf3; }
+  .nf, .nb { color: #d2a8ff; }
+  .nt { color: #7ee787; }
+  .nv, .vc, .vg, .vi { color: #ffa657; }
+  .s, .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sx, .sr, .ss, .dl { color: #a5d6ff; }
+  .m, .mf, .mh, .mi, .mo, .il { color: #79c0ff; }
+  .gd { color: #ffdcd7; background-color: #67060c; }
+  .gi { color: #aff5b4; background-color: #033a16; }
+  .gh { color: #79c0ff; font-weight: 600; }
+  .gu { color: #d2a8ff; font-weight: 600; }
+}

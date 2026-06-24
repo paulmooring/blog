@@ -1,0 +1,68 @@
+---
+layout: default
+---
+<section class="hero">
+  <p class="hero__eyebrow">The blog</p>
+  <h1 class="hero__title">{{ site.title }}</h1>
+  {%- if site.tagline -%}
+  <p class="hero__tagline">{{ site.tagline }}</p>
+  {%- endif -%}
+</section>
+
+{{ content }}
+
+{%- if site.posts.size > 0 -%}
+  {%- assign featured = site.posts.first -%}
+
+  <section class="featured" aria-label="Featured post">
+    <a class="featured__link" href="{{ featured.url | relative_url }}">
+      <div class="featured__media">
+        <img src="{{ featured.image | default: site.default_cover | relative_url }}"
+             alt="" loading="eager" width="800" height="450">
+      </div>
+      <div class="featured__body">
+        <div class="post-card__meta">
+          {%- if featured.categories.size > 0 -%}<span class="cat">{{ featured.categories.first }}</span>{%- endif -%}
+          <time datetime="{{ featured.date | date_to_xmlschema }}">{{ featured.date | date: "%b %-d, %Y" }}</time>
+        </div>
+        <h2 class="featured__title">{{ featured.title | escape }}</h2>
+        <p class="featured__excerpt">
+          {{ featured.description | default: featured.excerpt | strip_html | truncatewords: 36 }}
+        </p>
+        <span class="read-more">Read article →</span>
+      </div>
+    </a>
+  </section>
+
+  {%- if site.posts.size > 1 -%}
+  <section class="post-grid" aria-label="More posts">
+    <h2 class="section-title">More writing</h2>
+    <div class="post-grid__items">
+      {%- for post in site.posts offset:1 -%}
+      <article class="post-card">
+        <a class="post-card__link" href="{{ post.url | relative_url }}">
+          <div class="post-card__media">
+            <img src="{{ post.image | default: site.default_cover | relative_url }}"
+                 alt="" loading="lazy" width="600" height="338">
+          </div>
+          <div class="post-card__body">
+            <div class="post-card__meta">
+              {%- if post.categories.size > 0 -%}<span class="cat">{{ post.categories.first }}</span>{%- endif -%}
+              <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+            </div>
+            <h3 class="post-card__title">{{ post.title | escape }}</h3>
+            {%- if post.description or post.excerpt -%}
+            <p class="post-card__excerpt">
+              {{ post.description | default: post.excerpt | strip_html | truncatewords: 22 }}
+            </p>
+            {%- endif -%}
+          </div>
+        </a>
+      </article>
+      {%- endfor -%}
+    </div>
+  </section>
+  {%- endif -%}
+{%- else -%}
+  <p class="post-list__empty">No posts yet. Add a Markdown file to <code>_posts/</code> to get started.</p>
+{%- endif -%}
